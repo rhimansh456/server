@@ -17,7 +17,7 @@ const cookieParser = require('cookie-parser');
 
 
 const app = express();
-const PORT = 3306
+const PORT = 8081
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
@@ -35,7 +35,7 @@ console.log('Generated Secret Key:', secretKey);
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'mine',
     database: 'details_db'
 })
 
