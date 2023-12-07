@@ -1,11 +1,4 @@
-// import express from 'express';
-// import mysql from 'mysql';
-// import cors from 'cors';
-// import bcrypt from 'bcrypt';
-// import jwt from 'jsonwebtoken';
-// import crypto from 'crypto';
-// import session from 'express-session';
-// import cookieParser from 'cookie-parser';
+require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -16,8 +9,9 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
 
-const app = express();
-const PORT = 8081
+
+const app = express();``
+const PORT = process.env.PORT || 8081;
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
@@ -33,10 +27,10 @@ const secretKey = crypto.randomBytes(32).toString('hex');
 console.log('Generated Secret Key:', secretKey);
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'mine',
-    database: 'details_db'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 })
 
 app.get('/', (req, res) => {
